@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title"></title>
+</head>
+<body style="background: url('Resources/IMG_7471.png'); background-repeat:no-repeat; background-attachment: fixed; background-size: cover;">
+<h1 style="font-size: 60px; text-align: center">Top <span id="title#"></span> Baddest Seige Skins</h1>
+<div style="text-align: center">
+    <button id="next" onclick="nextSkin()"><span id="btext"></span></button> </div>
+<div id="skinDisplay" style="font-family: 'Comic Sans MS' ; text-align: center; font-size: 300%">
+    <p id="skinTitle"></p>
+    <img id="skinImage"   width="auto" height="760">
+</div>
+<script>
+    const skins = [
+        {title: "Iana Elite", img: "Resources/iana.webp"},
+        {title: "Caviera Elite" , img: "Resources/cav.jpg"},
+        {title: "Tachanka Elite" , img: "Resources/Tachanka.avif"},
+        {title: "Aruni Secret Leak (shhhh)" , img: "Resources/Aruni.jpg"},
+        {title: "Creepy Dokkaebi", img: "Resources/dokkaebi.jpg"},
+        {title: "Warden Elite" , img: "Resources/Warden.webp"},
+        {title: "Mozzie Borderlands " , img: "Resources/mozzie.webp"},
+        {title: "Osa" , img: "Resources/Osa_-_Full_Body.webp"},
+        {title: "Mira Elite" , img: "Resources/mira.avif"},
+        {title: "Ash Elite" , img: "Resources/ash.jpg"},
+        {title: "Morty" , img: "Resources/fuze.jpg"},
+        {title: "Roblox Guy" , img: "Resources/blox.png"},
+
+
+    ]
+    let btitle = "Next Skin";
+    document.getElementById("btext").innerHTML = btitle;
+    let title = "Top " + skins.length + " Baddest Seige Skins";
+    document.getElementById("title").innerHTML = title;
+    document.getElementById("title#").innerHTML = skins.length;
+    let currentindex = skins.length
+    function showSkin() {
+        const titleElement = document.getElementById("skinTitle");
+        const imageElement = document.getElementById("skinImage");
+
+        titleElement.textContent =currentindex+1 + "." + " " + skins[currentindex].title;
+        imageElement.src = skins[currentindex].img
+    }
+    function bupdate() {
+        if (currentindex == 0) {
+             btitle = "Restart";
+         } else {
+             btitle = "Next Skin";
+         }
+         document.getElementById("btext").innerHTML = btitle;
+    }
+    function nextSkin() {
+        currentindex = currentindex - 1;
+        if (currentindex == -1) {
+            currentindex = skins.length - 1;
+            btitle = "Restart";
+        } else {
+            btitle = "Next Skin";
+        }
+        bupdate()
+        showSkin();
+    }
+
+</script>
+<script>
+    document.getElementById('next').addEventListener('click', function(){ new Audio('Resources/boom.mp3').play(); });
+</script>
+</body>
+</html>
