@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        h1 {text-align: center;}
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Top 10 Baddest Fortnite Skins</title>
+</head>
+<body>
+<h1 style="font-size: 60px">Top 10 Baddest Fortnite Skins</h1>
+<div style="text-align: center">
+<button onclick="nextSkin()">Next Skin</button> </div>
+<div id="skinDisplay" style="font-family: 'Comic Sans MS' ; text-align: center;">
+    <p id="skinTitle"></p>
+    <img id="skinImage"   width="auto" height="760">
+</div>
+<script>
+    let currentindex = 10;
+    const skins = [
+        {title: "1. Chun-Li", img: "images/Chun-Li.jpg"},
+        {title: "2. Lifeguard" , img: "images/Lifeguard.jpg"},
+        {title: "3. Raven Team Leader" , img: "images/raven_team_leader.png"},
+        {title: "4. Calamity" , img: "images/Calamity.jpg"},
+        {title: "5. Rey", img: "images/Rey.webp"},
+        {title: "6. Flopper" , img: "images/Flopper.jpg"},
+        {title: "7.Era " , img: "images/Era.webp"},
+        {title: "8. Lynx" , img: "images/Lynx.jpg"},
+        {title: "9. Cuddle Team Leader" , img: "images/cuddle_team_leader.webp"},
+        {title: "10. Spitfire" , img: "images/black_guy.png"},
+
+
+    ]
+    function showSkin() {
+        const titleElement = document.getElementById("skinTitle");
+        const imageElement = document.getElementById("skinImage");
+
+        titleElement.textContent = skins[currentindex].title;
+        imageElement.src = skins[currentindex].img
+    }
+    function nextSkin() {
+        currentindex = currentindex - 1;
+        if(currentindex = 0) {
+            currentindex = 10;
+        }
+        showSkin();
+    }
+
+</script>
+
+</body>
+</html>
