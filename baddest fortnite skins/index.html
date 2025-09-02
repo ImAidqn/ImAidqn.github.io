@@ -1,53 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        h1 {text-align: center;}
-
-    </style>
     <meta charset="UTF-8">
     <title>Top 10 Baddest Fortnite Skins</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-size: 60px;
+        }
+    </style>
+
 </head>
-<body>
-<h1 style="font-size: 60px">Top 10 Baddest Fortnite Skins</h1>
+<body style="background: url('images/BattleBus.webp'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+<h1>Top 10 Baddest Fortnite Skins</h1>
 <div style="text-align: center">
-<button onclick="nextSkin()">Next Skin</button> </div>
+<button onclick="nextSkin()"><span id="buttonText"></span></button> </div>
 <div id="skinDisplay" style="font-family: 'Comic Sans MS' ; text-align: center;">
     <p id="skinTitle"></p>
     <img id="skinImage"   width="auto" height="760">
 </div>
 <script>
-    let currentindex = 10;
     const skins = [
-        {title: "1. Chun-Li", img: "images/Chun-Li.jpg"},
-        {title: "2. Lifeguard" , img: "images/Lifeguard.jpg"},
-        {title: "3. Raven Team Leader" , img: "images/raven_team_leader.png"},
-        {title: "4. Calamity" , img: "images/Calamity.jpg"},
-        {title: "5. Rey", img: "images/Rey.webp"},
-        {title: "6. Flopper" , img: "images/Flopper.jpg"},
-        {title: "7.Era " , img: "images/Era.webp"},
-        {title: "8. Lynx" , img: "images/Lynx.jpg"},
-        {title: "9. Cuddle Team Leader" , img: "images/cuddle_team_leader.webp"},
-        {title: "10. Spitfire" , img: "images/black_guy.png"},
-
-
+        {title: "Chun-Li", img: "images/Chun-Li.jpg"},
+        {title: "Lifeguard" , img: "images/Lifeguard.jpg"},
+        {title: "Raven Team Leader" , img: "images/raven_team_leader.png"},
+        {title: "Calamity" , img: "images/Calamity.jpg"},
+        {title: "Rey", img: "images/Rey.webp"},
+        {title: "Flopper" , img: "images/Flopper.jpg"},
+        {title: "Era " , img: "images/Era.webp"},
+        {title: "Lynx" , img: "images/Lynx.jpg"},
+        {title: "Cuddle Team Leader" , img: "images/cuddle_team_leader.webp"},
+        {title: "Spitfire" , img: "images/black_guy.png"},
     ]
+    let buttonTitle = "Next Skin"
+    document.getElementById("buttonText").innerHTML = buttonTitle;
+    let currentindex = skins.length;
     function showSkin() {
         const titleElement = document.getElementById("skinTitle");
         const imageElement = document.getElementById("skinImage");
 
-        titleElement.textContent = skins[currentindex].title;
+        titleElement.textContent =currentindex+1 + ". " +  skins[currentindex].title;
         imageElement.src = skins[currentindex].img
     }
-    function nextSkin() {
-        currentindex = currentindex - 1;
-        if(currentindex = 0) {
-            currentindex = 10;
+    function buttonUpdate() {
+        if(currentindex === 0) {
+            buttonTitle = "Restart";
+        } else {
+            buttonTitle = "Next Skin";
         }
+        document.getElementById("buttonText").innerHTML = buttonTitle;
+    }
+    function nextSkin() {
+        if(currentindex === 0) {
+            currentindex = skins.length - 1;
+        }else {
+            currentindex = currentindex - 1;
+        }
+        buttonUpdate();
         showSkin();
     }
-
 </script>
-
 </body>
 </html>
